@@ -10,6 +10,7 @@ if(days.length > 0) {
 else {
     return 0;
 }
+}
 
 console.log(
   calcAverageCalories([
