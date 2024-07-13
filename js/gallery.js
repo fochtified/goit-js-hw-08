@@ -1,5 +1,6 @@
 "use strict";
 
+// table of contents
 const images = [
     {
         preview:
@@ -66,7 +67,10 @@ const images = [
     },
 ];
 
+//pointing towards gallery (referencing gallery)
 const galleryList = document.querySelector(".gallery");
+
+//creating li elements
 const galleryItems = images
     .map(
         ({ preview, description, original }) =>
@@ -81,6 +85,21 @@ const galleryItems = images
 </a>
 </li>`
     )
+    //converting to strings
     .join("");
 
+//putting created li elements in the right place
 galleryList.insertAdjacentHTML("afterbegin", galleryItems);
+
+//event listener with delegation
+galleryList.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (event.target.tagName !== "IMG") {
+        console.log("Sorry, not an image");
+        return;
+    } else {
+        const originalUrl = event.target.dataset.source;
+        console.log(originalUrl);
+    }
+});
